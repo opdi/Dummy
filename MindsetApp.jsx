@@ -26,7 +26,7 @@ const MindsetApp = () => {
   const [chatMessages, setChatMessages] = useState([
     { 
       type: 'ai', 
-      message: "Hi Lovish! 👋 I'm Mira, your AI mental health companion. I'm here to listen, support, and help you navigate whatever you're going through. How are you feeling right now?", 
+      message: "Hi Lovish! 👋 I'm Reva, your AI mental health companion. I'm here to listen, support, and help you navigate whatever you're going through. How are you feeling right now?", 
       time: '2:30 PM',
       mood: 'supportive',
       suggestions: ['I\'m feeling stressed', 'I\'m doing okay', 'I need someone to talk to', 'I\'m having a tough day']
@@ -43,7 +43,7 @@ const MindsetApp = () => {
     recommendedActions: []
   });
   const [user] = useState({
-    name: "Lovish Kukreja",
+    name: "Lovish",
     year: "Junior",
     lastSession: "2 days ago",
     riskLevel: "Low"
@@ -427,7 +427,7 @@ const MindsetApp = () => {
                 <div className="absolute -bottom-1 -right-1 w-3 h-3 lg:w-4 lg:h-4 bg-green-500 rounded-full border-2 border-white"></div>
               </div>
               <div>
-                <h3 className="text-base lg:text-lg font-bold text-gray-800">Mira AI</h3>
+                <h3 className="text-base lg:text-lg font-bold text-gray-800">Reva AI</h3>
                 <p className="text-xs lg:text-sm text-green-600">🟢 Active & Learning</p>
                 <p className="text-xs text-gray-500 hidden sm:block">Specialized in college mental health</p>
               </div>
@@ -540,7 +540,7 @@ const MindsetApp = () => {
                       <div className="w-2 h-2 bg-blue-400 rounded-full animate-bounce" style={{animationDelay: '0.1s'}}></div>
                       <div className="w-2 h-2 bg-blue-400 rounded-full animate-bounce" style={{animationDelay: '0.2s'}}></div>
                     </div>
-                    <span className="text-xs text-gray-500 ml-2 hidden sm:inline">Mira is thinking...</span>
+                    <span className="text-xs text-gray-500 ml-2 hidden sm:inline">Reva is thinking...</span>
                   </div>
                 </div>
               </div>
@@ -673,10 +673,40 @@ const MindsetApp = () => {
       <div className="bg-white p-4 lg:p-6 rounded-xl lg:rounded-2xl border border-gray-200 shadow-sm">
         <h2 className="text-xl font-bold text-gray-800 mb-6">Book a Counseling Session</h2>
         
+        {/* Session Type Toggle */}
+        <div className="mb-6">
+          <div className="flex flex-col sm:flex-row gap-3">
+            <button className="flex-1 p-4 bg-blue-50 border-2 border-blue-200 rounded-xl text-blue-700 font-medium transition-all hover:bg-blue-100">
+              <div className="flex items-center justify-center gap-2 mb-2">
+                <div className="w-8 h-8 bg-blue-500 rounded-lg flex items-center justify-center">
+                  <Brain className="text-white" size={18} />
+                </div>
+                <span>On-Campus Sessions</span>
+              </div>
+              <p className="text-xs text-blue-600">Meet counselors at the student wellness center</p>
+            </button>
+            
+            <button className="flex-1 p-4 bg-green-50 border-2 border-green-200 rounded-xl text-green-700 font-medium transition-all hover:bg-green-100">
+              <div className="flex items-center justify-center gap-2 mb-2">
+                <div className="w-8 h-8 bg-green-500 rounded-lg flex items-center justify-center">
+                  <Heart className="text-white" size={18} />
+                </div>
+                <span>External Therapy</span>
+              </div>
+              <p className="text-xs text-green-600">Connect with certified therapists outside campus</p>
+            </button>
+          </div>
+        </div>
+        
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           <div>
             <h3 className="font-semibold text-gray-700 mb-4">Available Counselors</h3>
             <div className="space-y-3">
+              {/* On-Campus Counselors */}
+              <div className="bg-blue-25 border-l-4 border-blue-400 p-1 rounded-r-lg mb-3">
+                <p className="text-xs font-medium text-blue-700 px-3">📍 On-Campus</p>
+              </div>
+              
               <div className="p-4 border border-gray-200 rounded-xl hover:border-blue-300 hover:shadow-sm transition-all cursor-pointer">
                 <div className="flex items-center gap-3">
                   <div className="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center text-white font-semibold">
@@ -685,7 +715,7 @@ const MindsetApp = () => {
                   <div className="flex-1">
                     <h4 className="font-medium">Dr. Ragini Sinha</h4>
                     <p className="text-sm text-gray-600">Anxiety & Depression Specialist</p>
-                    <p className="text-xs text-green-600">Available Today</p>
+                    <p className="text-xs text-green-600">Available Today • Student Wellness Center</p>
                   </div>
                   <div className="text-sm text-gray-500">
                     4.9 ⭐
@@ -701,10 +731,49 @@ const MindsetApp = () => {
                   <div className="flex-1">
                     <h4 className="font-medium">Dr. Avinaash</h4>
                     <p className="text-sm text-gray-600">Stress & Academic Pressure</p>
-                    <p className="text-xs text-yellow-600">Available Tomorrow</p>
+                    <p className="text-xs text-yellow-600">Available Tomorrow • Counseling Office</p>
                   </div>
                   <div className="text-sm text-gray-500">
                     4.8 ⭐
+                  </div>
+                </div>
+              </div>
+
+              {/* External Therapists */}
+              <div className="bg-green-25 border-l-4 border-green-400 p-1 rounded-r-lg mb-3 mt-4">
+                <p className="text-xs font-medium text-green-700 px-3">🏢 External Partners</p>
+              </div>
+              
+              <div className="p-4 border border-gray-200 rounded-xl hover:border-green-300 hover:shadow-sm transition-all cursor-pointer">
+                <div className="flex items-center gap-3">
+                  <div className="w-12 h-12 bg-purple-500 rounded-full flex items-center justify-center text-white font-semibold">
+                    SK
+                  </div>
+                  <div className="flex-1">
+                    <h4 className="font-medium">Dr. Sanya Kapoor</h4>
+                    <p className="text-sm text-gray-600">Licensed Clinical Psychologist</p>
+                    <p className="text-xs text-green-600">Available Today • MindSpace Clinic</p>
+                  </div>
+                  <div className="flex flex-col items-end">
+                    <div className="text-sm text-gray-500">4.9 ⭐</div>
+                    <div className="text-xs text-purple-600">₹800/session</div>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="p-4 border border-gray-200 rounded-xl hover:border-green-300 hover:shadow-sm transition-all cursor-pointer">
+                <div className="flex items-center gap-3">
+                  <div className="w-12 h-12 bg-orange-500 rounded-full flex items-center justify-center text-white font-semibold">
+                    RP
+                  </div>
+                  <div className="flex-1">
+                    <h4 className="font-medium">Dr. Rohan Patel</h4>
+                    <p className="text-sm text-gray-600">Cognitive Behavioral Therapist</p>
+                    <p className="text-xs text-yellow-600">Available Tomorrow • Serenity Center</p>
+                  </div>
+                  <div className="flex flex-col items-end">
+                    <div className="text-sm text-gray-500">4.7 ⭐</div>
+                    <div className="text-xs text-orange-600">₹1000/session</div>
                   </div>
                 </div>
               </div>
@@ -735,6 +804,21 @@ const MindsetApp = () => {
                   <option>Phone Call</option>
                 </select>
               </div>
+              
+              {/* Additional Options for External */}
+              <div className="p-3 bg-amber-50 border border-amber-200 rounded-xl">
+                <div className="flex items-start gap-2">
+                  <AlertTriangle className="text-amber-500 mt-0.5" size={16} />
+                  <div>
+                    <p className="text-sm font-medium text-amber-800">External Therapy Note</p>
+                    <p className="text-xs text-amber-700 mt-1">
+                      Sessions with external partners may have associated costs. 
+                      Insurance coverage and financial assistance options available.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              
               <button className="w-full bg-blue-500 text-white py-3 rounded-xl hover:bg-blue-600 transition-colors font-medium">
                 Book Session
               </button>
